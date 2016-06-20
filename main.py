@@ -52,8 +52,7 @@ else:
   print("\nПовторная попытка: ")
   addmoney = int(input(" Добавьте сумму на ваш баланс: "))
   kek = addmoney + money
-  saveup = user,kek
-  moneydb.update([saveup])
+  moneydb[user] = kek
  ##Проверка Баланса##
 while True:
  moneys = str(input("\nВведите команду на проверку баланса(Не знаете команды?пропишите /help): "))
