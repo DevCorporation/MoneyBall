@@ -1,39 +1,56 @@
-print("By mcg76&Bruno99")
-print("MoneyBall API.v1")
-##База данных v1##
+print("Программа «MoneyBall API»\nВерсия: 0.3")
+print("\nРазработчики:\n Xaker Su - mcg76\n Максим Удачин - Bruno99")
+print("\nНаш Веб-Сайт: http://vk.com/dev.corp.python\n")
+
+
+##База данных v.1##
+
 moneydb = {
     "nick": "money"
 }
-users = ["keker:123"]
-##Мини-Авторизация##
-user = str(input("NickName: "))
-print(user)
-passw = str(input("Passwords: "))
-print(passw)
+users = []
+
+##Регистрация##
+
+print("\nЧтобы начать работать с программой, зарегистрируйтесь в нашей системе:\n")
+user = str(input("Пользователь: "))
+passw = str(input("Пароль: "))
 saves = user,":",passw
 users.append(saves)
 money = 0
 snickmoney = moneydb.fromkeys([user], money)
+
 #if user in moneydb:
  #money = moneydb[user]
-print("Save on BD", snickmoney)
+print("\nРегистрация завершена, как: \n Пользователь - ",user,"\n Пароль - ",passw)
 if user in users:
  print("Wrong!Error 404")
 else:
- print("You are auto as ",user)
+ print("\nПроверка завершена, пользователь «",user,"» присутсвует в Базе Данных.")
+ 
 ##Добавление денег##
+
 try:
- addmoneyu = str(input("Adding momey to: "))
- print(addmoneyu)
- addmoneyv = str(input("Adding money: "))
- print(addmoneyv)
- money = addmoneyv + money
+ addmoney = int(input("\nДобавьте сумму на ваш баланс: "))
+ money += addmoney
 except ValueError:
- print("Error ValueError..system is crashing")
-finally:
- print("Please enter a number value")
-##debug##
-print(moneydb)
-print(user)
-print(users)
-print(money)
+ print("Ошибка ввода, пожалуйста используйте цифры!")
+ print("\nПовторная попытка: ")
+ addmoney = int(input(" Добавьте сумму на ваш баланс: "))
+ money += addmoney
+ 
+ ##Проверка Баланса##
+moneys = str(input("\nВведите команду на проверку баланса: "))
+if moneys == "/money":
+ print("\nПользователь «",user,"», Баланс: ",money,"\n\n")
+else:
+ print("Команда не совпадает!")
+ print("Повторите ввод команды:")
+ moneys = str(input("\nВведите команду на проверку баланса: "))
+ if moneys == "/money":
+  print("\nПользователь «",user,"», Баланс: ",money,"\n\n")
+ else:
+  print("\nКритическая ошибка, попытка закончена.\n\n")
+
+# Конец программы(Дно) #
+print("----------"*5,"\n     Работа программы завершена! ©DevCorp\n","----------"*5)
