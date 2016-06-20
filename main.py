@@ -1,4 +1,5 @@
-print("Программа «MoneyBall API»\nВерсия: 0.3")
+print("This is console module")
+print("Программа «MoneyBall API»\nВерсия: 0.5")
 print("\nРазработчики:\n Xaker Su - mcg76\n Максим Удачин - Bruno99")
 print("\nНаш Веб-Сайт: http://vk.com/dev.corp.python\n")
 
@@ -28,7 +29,6 @@ don = "Пользователь"
 if user == admin:
  print("Загрузка....")
 else:
- don = "Администратор"
  print("Здраствуйте Администратор!")
 #if user in moneydb:
  #money = moneydb[user]
@@ -40,8 +40,9 @@ else:
 
 ##Добавление денег##
 if not user in admin:
- print("Ошибка доступа")
+ print("доступ к добавлению денег запрещен!")
 else:
+ don = "Администратор"
  print("Вы может изменить баланс!")
  try:
   addmoney = int(input("\nДобавьте сумму на ваш баланс: "))
@@ -50,14 +51,23 @@ else:
   print("Ошибка ввода, пожалуйста используйте цифры!")
   print("\nПовторная попытка: ")
   addmoney = int(input(" Добавьте сумму на ваш баланс: "))
-  money += addmoney
+  kek = addmoney + money
+  saveup = user,kek
+  moneydb.update([saveup])
  ##Проверка Баланса##
-moneys = str(input("\nВведите команду на проверку баланса(Не знаете команды?пропишите /help): "))
-if moneys == "/money":
- print("\nПользователь «",user,"», Баланс: ",money,",Доступ: ",don,"\n\n")
-else:
- print("Команда не совпадает!")
- print("Повторите ввод команды:")
+while True:
+ moneys = str(input("\nВведите команду на проверку баланса(Не знаете команды?пропишите /help): "))
+ if moneys == "/money":
+  print("\nПользователь «",user,"», Баланс: ",money,",Доступ: ",don,"\n\n")
+ else:
+  print("Команда не совпадает!")
+  print("Повторите ввод команды:")
+  break
+  if not moneys == "/quit":
+   print("Exiting..")
+   raise ValueError
+  else:
+   continue
  ##return сюда!!
 # Конец программы(Дно) #
 print("----------"*5,"\n     Работа программы завершена! ©DevCorp\n","----------"*5)
