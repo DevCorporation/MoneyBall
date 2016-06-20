@@ -8,8 +8,13 @@ print("\nНаш Веб-Сайт: http://vk.com/dev.corp.python\n")
 moneydb = {
     "nick": "money"
 }
-users = []
-
+users = ["admin:229"]
+userik = {
+	   "nick": "привелегия"
+}
+vip = []
+elite = []
+admin = ["admin"]
 ##Регистрация##
 
 print("\nЧтобы начать работать с программой, зарегистрируйтесь в нашей системе:\n")
@@ -19,7 +24,12 @@ saves = user,":",passw
 users.append(saves)
 money = 0
 snickmoney = moneydb.fromkeys([user], money)
-
+don = "Пользователь"
+if user == admin:
+ print("Загрузка....")
+else:
+ don = "Администратор"
+ print("Здраствуйте Администратор!")
 #if user in moneydb:
  #money = moneydb[user]
 print("\nРегистрация завершена, как: \n Пользователь - ",user,"\n Пароль - ",passw)
@@ -27,30 +37,27 @@ if user in users:
  print("Wrong!Error 404")
 else:
  print("\nПроверка завершена, пользователь «",user,"» присутсвует в Базе Данных.")
- 
-##Добавление денег##
 
-try:
- addmoney = int(input("\nДобавьте сумму на ваш баланс: "))
- money += addmoney
-except ValueError:
- print("Ошибка ввода, пожалуйста используйте цифры!")
- print("\nПовторная попытка: ")
- addmoney = int(input(" Добавьте сумму на ваш баланс: "))
- money += addmoney
- 
+##Добавление денег##
+if not user in admin:
+ print("Ошибка доступа")
+else:
+ print("Вы может изменить баланс!")
+ try:
+  addmoney = int(input("\nДобавьте сумму на ваш баланс: "))
+  money += addmoney
+ except ValueError:
+  print("Ошибка ввода, пожалуйста используйте цифры!")
+  print("\nПовторная попытка: ")
+  addmoney = int(input(" Добавьте сумму на ваш баланс: "))
+  money += addmoney
  ##Проверка Баланса##
-moneys = str(input("\nВведите команду на проверку баланса: "))
+moneys = str(input("\nВведите команду на проверку баланса(Не знаете команды?пропишите /help): "))
 if moneys == "/money":
- print("\nПользователь «",user,"», Баланс: ",money,"\n\n")
+ print("\nПользователь «",user,"», Баланс: ",money,",Доступ: ",don,"\n\n")
 else:
  print("Команда не совпадает!")
  print("Повторите ввод команды:")
- moneys = str(input("\nВведите команду на проверку баланса: "))
- if moneys == "/money":
-  print("\nПользователь «",user,"», Баланс: ",money,"\n\n")
- else:
-  print("\nКритическая ошибка, попытка закончена.\n\n")
-
+ ##return сюда!!
 # Конец программы(Дно) #
 print("----------"*5,"\n     Работа программы завершена! ©DevCorp\n","----------"*5)
