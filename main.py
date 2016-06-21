@@ -1,7 +1,7 @@
 print("Программа «MoneyBall API»\nВерсия: 1.0")
 print("\nРазработчики:\n Xaker Su - mcg76\n Максим Удачин - Bruno99")
 print("\nНаш Веб-Сайт: http://vk.com/dev.corp.python\n")
-##Глобальная хуйня##
+##Глобал##
 global money
 money = 0
 ##База данных v.1##
@@ -36,9 +36,9 @@ if user in users:
 else:
  print("\nРегистрация завершена, как: \n Пользователь - ",user,"\n Пароль - ",passw)
  print("\nПроверка завершена, пользователь «",user,"» присуствует в Базе Данных.")
-##Команды нахуй##
+##Команды##
 def helps():
- print("Говно залупа")
+ print("Commands to:")
 def addmoneys():
  while True:
   try:
@@ -58,5 +58,5 @@ while True:
  if command in commands:
   commands[comsend]()
  else:
-  print("Хуйню ввел")
+  print("Ваша жизнь ошибка..")
   continue
