@@ -77,11 +77,11 @@ def addmoneys():
    print("\nПовторная попытка: ")
    continue
   finally:
-   break
    ##WARNING НЕ РАБОТАЕТ##
    money = money+addmoney
    adm = addmoneys,money
    moneydb.update([adm])
+   break
 commands = {'/helps': helps,'/addmoney': addmoneys,'/mymoney': moneyss,'/getbd': dbcheck}
 while True:
  comsend = input("Введите команду:")
