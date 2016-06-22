@@ -1,4 +1,4 @@
-print("Программа «MoneyBall API»\nВерсия: 2.0")
+print("Программа «MoneyBall API»\nВерсия: 2.1")
 print("\nРазработчики:\n Xaker Su - mcg76\n Максим Удачин - Bruno99")
 print("\nНаш Веб-Сайт: http://vk.com/dev.corp.python\n")
 ##Глобальная хуйня##
@@ -45,7 +45,7 @@ else:
  mymoney = user,0
  moneydb.update([mymoney])
 don = "Пользователь"
-if user == "Администратор":
+if not user == "admin":
  print("Загрузка....")
 else:
  print("Здраствуйте Администратор!")
