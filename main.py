@@ -1,7 +1,7 @@
 print("Программа «MoneyBall API»\nВерсия: 3.0")
 print("\nРазработчики:\n Xaker Su - mcg76\n Максим Удачин - Bruno99")
 print("\nНаш Веб-Сайт: http://vk.com/dev.corp.python\n")
-##Глобальная хуйня##
+##Глобальная##
 import time
 global money
 money = 0
@@ -66,8 +66,19 @@ def status():
 def dbcheck():
  print("База денег:",moneydb)
  print("Пользователи:",users)
+def keepcall():
+ try:
+    file = open('input.txt')
+ except IOError as e:
+    print('не удалось открыть файл')
+    print("Создаю новый бэкап сохранения")
+    file = open("moneybd", "w")
+    f.write(moneydb)
+ else:
+    with file:
+     print('нашли файл')
 def helps():
- print("/addmoney ,/helps,/getbd,/stats")
+ print("/shutdown,/addmoney ,/helps,/getbd,/stats")
 """
  while True:
   try:
@@ -92,7 +103,7 @@ def helps():
     finally:
      break
      """
-commands = {'/helps': helps,'/stats': status,'/getbd': dbcheck}
+commands = {'/helps': helps,'/stats': status,'/getbd': dbcheck,'/shutdown': keepcall}
 while True:
  comsend = input("Введите команду:")
  command = comsend
