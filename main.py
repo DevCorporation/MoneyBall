@@ -1,4 +1,4 @@
-print("Программа «MoneyBall API»\nВерсия: 2.1")
+print("Программа «MoneyBall API»\nВерсия: 3.0")
 print("\nРазработчики:\n Xaker Su - mcg76\n Максим Удачин - Bruno99")
 print("\nНаш Веб-Сайт: http://vk.com/dev.corp.python\n")
 ##Глобальная хуйня##
@@ -6,7 +6,7 @@ import time
 global money
 money = 0
 ##База данных v.1##
-moneydb = {'kok': 0}
+moneydb = {'kok': 200}
 users = {'keker': 123,'admin': 229}
 userik = {
 	   "nick": "привелегия"
@@ -34,9 +34,8 @@ if user in users:
    print("Сейчас вы в режиме: ",don)
  else:
    print("Логин завершен как: ",user,)
- #if key in users:
-   #else:
-  #print("Логин завершен как: ",user,)
+   ##V3.1##
+   ##Добавить базу данных как файл##
 else:
  print("\nРегистрация завершена, как: \n Пользователь - ",user,"\n Пароль - ",passw)
  ##users = dict(user, passw)
@@ -48,22 +47,28 @@ don = "Пользователь"
 if not user == "admin":
  print("Загрузка....")
 else:
- print("Здраствуйте Администратор!")
- don = "Администратор"
+ if users[user] == passw:
+  print("Здраствуйте Администратор!")
+  don = "Администратор"
+ else:
+  print("Вы не являйтесь Администратором,ваш статус будет назначен как <Аноним>")
+  don = "Аноним"
 #if user in moneydb:
  #money = moneydb[user]
-##Команды нахуй##
-def dbcheck():
- print(moneydb)
- print(users)
-def moneyss():
- if not user == "Администратор":
-  print(moneydb)
+##Команды##
+def status():
+ print("Режим: ",don)
+ moneyy = moneydb.get(user)
+ if moneyy == None:
+  print("Ошибка при получении баланса")
  else:
-  print("В разработке")
+  print("Баланс: ",moneyy)
+def dbcheck():
+ print("База денег:",moneydb)
+ print("Пользователи:",users)
 def helps():
- print("/addmoney ,/helps,/getdb")
-def addmoneys():
+ print("/addmoney ,/helps,/getbd,/stats")
+"""
  while True:
   try:
    if don == "Администратор":
@@ -77,12 +82,17 @@ def addmoneys():
    print("\nПовторная попытка: ")
    continue
   finally:
-   ##WARNING НЕ РАБОТАЕТ##
-   money = money+addmoney
-   adm = addmoneys,money
-   moneydb.update([adm])
-   break
-commands = {'/helps': helps,'/addmoney': addmoneys,'/mymoney': moneyss,'/getbd': dbcheck}
+   ##WARNING РАБОТАЕТ##
+    try:
+     money = money+addmoney
+     adm = addmoneys,money
+     moneydb.update([adm])
+    except UnboundLocalError:
+     print("Нужно иметь права Администратора для достура к этому пункту")
+    finally:
+     break
+     """
+commands = {'/helps': helps,'/stats': status,'/getbd': dbcheck}
 while True:
  comsend = input("Введите команду:")
  command = comsend
